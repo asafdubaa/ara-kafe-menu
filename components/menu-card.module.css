@@ -1,0 +1,16 @@
+.dietaryIndicator {
+  color: #492009; /* amber-700 */
+  font-size: 0.9em;
+  margin-left: 0.5rem;
+  opacity: 0.9;
+  font-weight: 400;
+  letter-spacing: 0.3px;
+  display: inline-flex;
+  align-items: center;
+  vertical-align: middle;
+}
+
+/* Ensure proper spacing around dietary indicators */
+.dishName {
+  display: inline;
+}

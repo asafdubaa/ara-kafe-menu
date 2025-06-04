@@ -1,0 +1,657 @@
+{
+  "breakfast": [
+    {
+      "name_en": "Ara Breakfast <span class=\"dietary-indicator\">Vt</span>",
+      "description_en": "Green and black olives from Edremit and Ayvalık, white cheese, Bergama tulum cheese, çökelek cheese, cherry tomatoes, cucumber, tomato and pepper paste with walnut and sesame, hard boiled egg, sun dried apricot and almonds, butter, jam or honey of your choice and tea",
+      "name_tr": "Ara Kahvaltı <span class=\"dietary-indicator\">Vt</span>",
+      "description_tr": "Ezine beyaz peyniri, Bergama tulum peyniri, yeşil biberli çökelek peyniri, yeşil kırma Edremit zeytini, siyah yuvarlama Ayvalık zeytini, kiraz domates, Çengelköy salatalığı, Kafe Ara yapımı hafif acı cevizli susamlı salça, katı haşlanmış yumurta, güneşte kurutulmuş kayısı ve badem, tereyağı ve seçiminize göre reçel, marmelat ya da süzme bal ve 1 adet çay",
+      "price": "400 TL"
+    },
+    {
+      "name_en": "Simit with Melted Cheese",
+      "description_en": "Simit (Turkish style bagel) with melted Bergama tulum cheese or mozzarella cheese and tomato and pepper paste with walnut and sesame, green salad with fresh herbs vinaigrette",
+      "ingredients_en": "",
+      "name_tr": "Fırında Simit",
+      "description_tr": "Cevizli susamlı hafif acı salça, Bergama tulum peyniri veya mozzarella peyniri ile fırınlanmış simit, taze otlu vinegretli karışık yeşillikler",
+      "ingredients_tr": "",
+      "price": "320 TL"
+    },
+    {
+      "name_en": "Open Faced Toast As You Wish <span class=\"dietary-indicator\">Vt</span>",
+      "description_en": "Open faced toast of your choice with mozzarella cheese, salami, sucuk or veal ham on slices of sourdough bread; served with green salad with fresh herbs vinaigrette\nwith Cheese 350 TL\nExtra Ingredients 45 TL",
+      "name_tr": "İsteğe Göre Açık Tost <span class=\"dietary-indicator\">Vt</span>",
+      "description_tr": "Ekşi mayalı ekmek üzerinde isteğe göre, erimiş mozzarella peyniri, salam, sucuk ya da dana jambon; taze otlu vinegretli karışık yeşillikler eşliğinde\nPeynirli 350 TL\nEk Malzemeler 45 TL",
+      "price": "350 TL"
+    },
+    {
+      "name_en": "Avocado Toast with Egg <span class=\"dietary-indicator\">Vt</span>",
+      "description_en": "Sourdough bread topped with spring onions and avocado puree with parsley, optionally with fried, scrambled or soft boiled eggs; served with green salad with fresh herbs vinaigrette",
+      "name_tr": "Ekmek Üstü Avokado & Yumurta <span class=\"dietary-indicator\">Vt</span>",
+      "description_tr": "Kızarmış ekşi maya ekmek dili üzerinde maydanoz ve taze soğanlı avokado püresi ve isteğe göre bir adet kızarmış / çırpılmış / haşlanmış yumurta; taze otlu vinegretli karışık yeşillikler eşliğinde",
+      "price": "390 TL"
+    },
+    {
+      "name_en": "Tulum Cheese Eggplant Panini <span class=\"dietary-indicator\">Vt</span>",
+      "description_en": "Slices of Bergama tulum cheese, charred eggplant purée and thyme toasted in between slices of sourdough bread; served with green salad with fresh herbs vinaigrette",
+      "name_tr": "Tulum Peynirli Köz Patlıcanlı Tost <span class=\"dietary-indicator\">Vt</span>",
+      "description_tr": "Ekşi mayalı ekmek dilimleri arasında Bergama tulum peyniri, közlenmiş patlıcan ve kekik tost edilmiş; taze otlu vinegretli karışık yeşillikler eşliğinde",
+      "price": "330 TL"
+    },
+    {
+      "name_en": "Puff Beurreck <span class=\"dietary-indicator\">Vt</span>",
+      "description_en": "5 pieces of fried beurrecks with minced meat / lor cheese filling; served with green salad with fresh herbs vinaigrette",
+      "ingredients_en": "with Minced Meat / Lor Cheese/ Mixed",
+      "name_tr": "Puf Böreği <span class=\"dietary-indicator\">Vt</span>",
+      "description_tr": "5 adet elde açılmış ve kızartılmış puf böreği hamuru içinde kıymalı veya lor peynirli karışım; taze otlu vinegretli karışık yeşillikler eşliğinde",
+      "ingredients_tr": "Kıymalı / Lor Peynirli/ Karışık",
+      "price": "420 TL"
+    },
+    {
+      "name_en": "Fried Sucuk",
+      "description_en": "",
+      "ingredients_en": "",
+      "name_tr": "Sahanda Sucuk",
+      "description_tr": "",
+      "ingredients_tr": "",
+      "price": "300 TL"
+    },
+    {
+      "name_en": "Eggs in Cast Iron Skillet with Oyster Mushroom & Caramelized Onion",
+      "description_en": "",
+      "ingredients_en": "",
+      "name_tr": "Döküm Sahanda İstiridye Mantarlı & Karamelize Soğanlı Yumurta",
+      "description_tr": "",
+      "ingredients_tr": "",
+      "price": "290 TL"
+    },
+    {
+      "name_en": "Omelette",
+      "description_en": "Omelette made with parsley of your choice with white cheese, mozzarella cheese, veal ham, sucuk, tomatoes, black olives or mushroom; served with green salad with fresh herbs vinaigrette\nPlain 230 TL\nExtra Ingredients 45 TL",
+      "ingredients_en": "",
+      "name_tr": "Omlet",
+      "description_tr": "Maydanozlu omlet; taze otlu vinegretli karışık yeşillikler eşliğinde\nİsteğe göre mozzarella peynir, Ezine beyaz peyniri, sucuk, domates, siyah zeytin ya da mantar ekleyebilirsiniz\nSade 230 TL\nEk Malzemeler 45 TL",
+      "ingredients_tr": "",
+      "price": "230 TL"
+    },
+    {
+      "name_en": "Oyster Mushroom & Caramelized Onion Omelette <span class=\"dietary-indicator\">Vt</span>",
+      "description_en": "Served with green salad with fresh herbs vinaigrette",
+      "name_tr": "İstiridye Mantarlı & Karamelize Soğanlı Omlet <span class=\"dietary-indicator\">Vt</span>",
+      "description_tr": "Taze otlu vinegretli karışık yeşillikler eşliğinde",
+      "price": "290 TL"
+    },
+    {
+      "name_en": "Fried Eggs",
+      "description_en": "Of your choice with mozzarella cheese, white cheese, sucuk, veal ham or mushroom\nPlain 210 TL\nExtra Ingredients 45 TL",
+      "ingredients_en": "",
+      "name_tr": "Sahanda Yumurta",
+      "description_tr": "İsteğe göre mozzarella peynir, Ezine beyaz peyniri, sucuk ya da mantar ekleyebilirsiniz\nSade 210 TL\nEk Malzemeler 45 TL",
+      "ingredients_tr": "",
+      "price": "210 TL"
+    },
+    {
+      "name_en": "Eggs with Tomatoes and Green Peppers",
+      "description_en": "Menemen made of your choice with mozzarella cheese, white cheese or sucuk\nPlain 300 TL\nExtra Ingredients 45 TL",
+      "ingredients_en": "",
+      "name_tr": "Sahanda Menemen",
+      "description_tr": "İsteğe göre mozzarella peynir, Ezine beyaz peyniri ya da sucuk ekleyebilirsiniz\nSade 300 TL\nEk Malzemeler 45 TL",
+      "ingredients_tr": "",
+      "price": "300 TL"
+    }
+  ],
+  "salads": [
+    {
+      "name_en": "Crispy Chicken Salad",
+      "description_en": "Mixed greens served with fried 180 gr. chicken pieces coated with spicy corn chips, marinated sun dried tomato, capers, green olives from Edremit, radish, lentil sprouts and fresh herbs vinaigrette",
+      "ingredients_en": "",
+      "name_tr": "Çıtır Tavuk Salatası",
+      "description_tr": "Mısır gevreği ile kaplanıp kızartılmış 180 gr tavuk göğsü dilimleri, marine edilmiş kuru domates, kapari, yeşil kırma Edremit zeytini, turp dilimleri, mercimek filizi, karışık yeşillikler ve taze otlu vinegret",
+      "ingredients_tr": "",
+      "price": "500 TL"
+    },
+    {
+      "name_en": "Honey Mustard Chicken Salad",
+      "description_en": "230 gr. pan-fried slices of chicken marinated with honey mustard sauce served with mixed greens, quinoa, pomegranate and fresh herbs vinaigrette",
+      "ingredients_en": "",
+      "name_tr": "Hardal Soslu Tavuk Salatası",
+      "description_tr": "Ballı hardal sos ile marine edilip döküm tavada pişirilmiş 230 gr tavuk budu dilimleri, kinoa, nar, karışık yeşillikler ve taze otlu vinegret",
+      "ingredients_tr": "",
+      "price": "425 TL"
+    },
+    {
+      "name_en": "Black Eyed Pea and Courgette Salad with Grilled Sea Bass",
+      "description_en": "Cast iron grilled fillet of sea bass (120 gr.) served on grilled ribbons of courgette, black eyed peas, green olives from Edremit, fresh chili flakes, scallion, rocket and mint leaves and fresh herbs vinaigrette",
+      "ingredients_en": "",
+      "name_tr": "Levrekli Kuru Börülce ve Izgara Kabak Salatası",
+      "description_tr": "Izgara kabak şeritleri, haşlanmış kuru börülce, yeşil kırma Edremit zeytini, acı Meksika biberi parçacıkları, yeşil soğan, roka ve nane yaprakları üzerinde döküm tavada ızgara edilmiş 120 gr levrek filetosu ve taze otlu vinegret",
+      "ingredients_tr": "",
+      "price": "470 TL"
+    },
+    {
+      "name_en": "Farro Salad with Pomegranate Sauce <span class=\"dietary-indicator\">Vt</span>",
+      "description_en": "Farro salad with black eyed peas, green lentil, fresh herbs, scallion, rocket leaves, lentil sprouts, pomegranate, toasted almond, crumbled white cheese and special pomegranate sauce",
+      "name_tr": "Nar Ekşili Buğday ve Baklagil Salatası <span class=\"dietary-indicator\">Vt</span>",
+      "description_tr": "Haşlanmış buğday, kuru börülce ve yeşil mercimek ile karıştırılmış maydanoz, nane, fesleğen, roka, taze soğan, nar, mercimek filizi, kavrulmuş badem, ufalanmış Ezine beyaz peyniri ve özel nar ekşisi sosu",
+      "price": "390 TL"
+    },
+    {
+      "name_en": "Goat Cheese Salad with Almonds <span class=\"dietary-indicator\">Vt</span>",
+      "description_en": "Mixed greens served with warm goat cheese, roasted almond, dried barberry and special pomegranate sauce",
+      "name_tr": "Bademli Keçi Peynirli Salata <span class=\"dietary-indicator\">Vt</span>",
+      "description_tr": "Ilık keçi peyniri, kavrulmuş badem, nar, özel nar ekşisi sosu ve karışık yeşillikler",
+      "price": "390 TL"
+    },
+    {
+      "name_en": "Ara Salad <span class=\"dietary-indicator\">Vt/Vg</span>",
+      "description_en": "Yedikule lettuce, half avocado, green apple, Mihaliç cheese, walnut, sipecial lime vinaigrette",
+      "name_tr": "Ara Salata <span class=\"dietary-indicator\">Vt/Vg</span>",
+      "description_tr": "Yedikule marul, yarım avokado, yeşil elma, Mihaliç peyniri, ceviz, özel lime vinegret",
+      "price": "330 TL"
+    },
+    {
+      "name_en": "Vegan Farro Salad with Pomegranate Sauce <span class=\"dietary-indicator\">Vg</span>",
+      "description_en": "",
+      "name_tr": "Vegan Buğday ve Baklagil Salatası <span class=\"dietary-indicator\">Vg</span>",
+      "description_tr": "",
+      "price": "350 TL"
+    }
+  ],
+  "snacks": [
+    {
+      "name_en": "Chicken and Mushroom Wrap",
+      "description_en": "Lavaş wrap with chicken, mushroom and red onion sautéed with cream and smoky Çerkez cheese; served with pommes frittes",
+      "ingredients_en": "",
+      "name_tr": "Tavuklu Mantarlı Dürüm",
+      "description_tr": "İnce lavaş ekmeğine sarılmış isli Çerkez peyniri, krema ile sote edilmiş tavuk göğsü parçaları, istiridye ve kültür mantarları ve kırmızı soğan; kızarmış patates eşliğinde",
+      "ingredients_tr": "",
+      "price": "420 TL"
+    },
+    {
+      "name_en": "Fried Balls of Zucchini and Potato <span class=\"dietary-indicator\">Vt</span>",
+      "description_en": "4 pieces of fried balls of zucchini, potato, Edremit sepet cheese and fresh herbs; served with yoghurt sauce with cucumber and fresh herbs",
+      "name_tr": "Kabaklı Patatesli Mücver <span class=\"dietary-indicator\">Vt</span>",
+      "description_tr": "Kabak, patates, Edremit sepet peyniri, taze yeşilliklerle yapıp çıtır ekmek kırıntısıyla kaplayıp kızarttığımız unsuz ve yumurtasız 4 adet mücver; salatalıklı ve taze yeşillikli süzme yoğurt sosu eşliğinde",
+      "price": "380 TL"
+    },
+    {
+      "name_en": "Crisp Basket",
+      "description_en": "280 gr. fried chicken pieces coated with spicy corn chips and pommes frittes; served with creamy mustard sauce and pickled cucumber",
+      "ingredients_en": "",
+      "name_tr": "Kıtır Sepet",
+      "description_tr": "Mısır gevreği ile kaplanıp kızartılmış 280 gr tavuk göğsü dilimleri ve kızarmış patates; salatalık turşusu ve özel hardal sos eşliğinde",
+      "ingredients_tr": "",
+      "price": "450 TL"
+    },
+    {
+      "name_en": "Falafel Plate <span class=\"dietary-indicator\">Vg</span>",
+      "description_en": "7 fried of falafel balls served with lemon-tahini sauce, leaves of Yedikule lettuce, slices of tomato, pickled cucumber and thin slices of red onion with fresh herbs vinaigrette",
+      "name_tr": "Falafel Tabağı <span class=\"dietary-indicator\">Vg</span>",
+      "description_tr": "Nohut, kişniş, maydanoz, çeşitli baharatlar, soğan, sarımsak ile yoğurulup kızartılmış 7 adet falafel topu; ekşili tahin sos, taze otlu vinegretli Yedikule marulu yaprakları, domates dilimleri, salatalık turşusu ve ince kırmızı soğan dilimleri eşliğinde",
+      "price": "400 TL"
+    },
+    {
+      "name_en": "Pommes Frittes",
+      "description_en": "",
+      "ingredients_en": "",
+      "name_tr": "Kızarmış Patates",
+      "description_tr": "",
+      "ingredients_tr": "",
+      "price": "250 TL"
+    },
+    {
+      "name_en": "Soup Of The Day",
+      "description_en": "",
+      "ingredients_en": "",
+      "name_tr": "Günün Çorbası",
+      "description_tr": "Lütfen servis elemanımıza danışınız.",
+      "ingredients_tr": "Please ask the staff.",
+      "price": "160 TL"
+    }
+  ],
+  "pastas": [
+    {
+      "name_en": "Penne with Three Kinds of Mushroom and Smoked Beef Rib Sauce",
+      "description_en": "Penne served with a creamy sauce of three kinds of mushrooms, 40 gr. smoked beef rib, spinach leaves, sun dried tomato and curry, fresh basil and parmesan cheese",
+      "ingredients_en": "",
+      "name_tr": "Üç Mantarlı ve Füme Etli Makarna",
+      "description_tr": "Kültür, kestane ve kayın mantarlı, 40 gr füme dana kaburgalı, ıspanak yapraklı, kuru domatesli, körili, hafif kremalı sos, fesleğen yaprakları ve parmesan peyniri eşliğinde penne",
+      "ingredients_tr": "",
+      "price": "450 TL"
+    },
+    {
+      "name_en": "Penne with Sun-dried Tomato Paste and Lor Cheese <span class=\"dietary-indicator\">Vt</span>",
+      "description_en": "Penne served with sun-dried tomato pasto, black olives from Ayvalık, lor cheese and basil",
+      "name_tr": "Kurutulmuş Domates Pestolu & Ayvalık Lor Peynirli Makarna <span class=\"dietary-indicator\">Vt</span>",
+      "description_tr": "Kurutulmuş domates pesto, siyah yuvarlama Ayvalık zeytini, Ayvalık lor peyniri ve taze fesleğen eşliğinde penne",
+      "price": "420 TL"
+    },
+    {
+      "name_en": "Fresh Tagliatelle with Vegetable, Chicken and Soy Sauce",
+      "description_en": "Kafe Ara made fresh tagliatelle served with a sauce of winter vegetables, chicken, soy sauce, spinach leaves, cream, parmesan cheese and fresh basil",
+      "ingredients_en": "",
+      "name_tr": "Tavuk ve Sebzeli Soyalı Makarna",
+      "description_tr": "Karışık kış sebzeli, tavuklu, soyalı, ıspanak yapraklı, kremalı sos, parmesan peyniri ve fesleğen yaprakları eşliğinde Kafe Ara yapımı taze tagliatelle",
+      "ingredients_tr": "",
+      "price": "440 TL"
+    },
+    {
+      "name_en": "Short Egg Tagliatelle with Cheese Sauce <span class=\"dietary-indicator\">Vt</span>",
+      "description_en": "Turkish style short egg tagliatelle served with white cheese and Bergama tulum cheese sauce with butter, walnut, garlic, parsley, dill and scallion",
+      "name_tr": "Cevizli ve Peynirli Erişte <span class=\"dietary-indicator\">Vt</span>",
+      "description_tr": "Ezine beyaz peynirli ve Bergama tulum peynirli, tereyağlı, cevizli, hafif sarımsaklı, maydanozlu, dereotlu, taze soğanlı sos eşliğinde bol yumurtalı ve sütlü Edremit eriştesi",
+      "price": "425 TL"
+    },
+    {
+      "name_en": "Turkish Style Dumplings with Minced Meat",
+      "description_en": "200 gr. Turkish style dumplings filled with minced meat; served with yoghurt with garlic and melted butter and olive oil with spices and tomato paste",
+      "ingredients_en": "",
+      "name_tr": "Mantı",
+      "description_tr": "Hafif sarımsaklı yoğurt ve salçalı, baharatlı tereyağı ve zeytinyağı eşliğinde kıymalı 200 gr mantı",
+      "ingredients_tr": "",
+      "price": "425 TL"
+    }
+  ],
+  "mainDishes": [
+    {
+      "name_en": "Hamburger",
+      "description_en": "150 gr. hamburger patty, mayonnaise with charred eggplant, caramelized onion and pickled cucumber in Kafe Ara made brioche bread; served with pommes frittes",
+      "ingredients_en": "",
+      "name_tr": "Dana Burger",
+      "description_tr": "Kafe Ara yapımı briyoş ekmeği içinde 150 gr. dana ve kuzu karışımı hamburger köftesi, köz patlıcanlı mayonez, karamelize soğan ve salatalık turşusu; patates kızartması eşliğinde",
+      "ingredients_tr": "",
+      "price": "530 TL"
+    },
+    {
+      "name_en": "Çökertme with Meatballs",
+      "description_en": "160 gr. slices of grilled meatballs served on fried potatoes; served with yoghurt, basil tomato sauce and grilled pepper",
+      "ingredients_en": "",
+      "name_tr": "Köfteli Çökertme",
+      "description_tr": "Kızarmış kibrit patates üzerinde 160 gr. ızgara köfte dilimleri, yoğurt, fesleğenli domates sosu ve közlenmiş biber",
+      "ingredients_tr": "",
+      "price": "520 TL"
+    },
+    {
+      "name_en": "Roast Chicken",
+      "description_en": "300 gr. chicken roasted slowly with rosemary, thyme, sage, carrot, onion, celery stick and garlic cloves; served with roast potatoes with rosemary and rocket leaves with fresh herbs vinaigrette",
+      "ingredients_en": "",
+      "name_tr": "Fırın Tavuk",
+      "description_tr": "Biberiye, kekik, adaçayı, havuç, soğan, kereviz sapı ve kabuklu sarımsaklarla fırında ağır ağır pişirilmiş 300 gr. tavuk; fırınlanmış sarımsaklı patates püresi ve taze otlu vinegretli roka yaprakları eşliğinde",
+      "ingredients_tr": "",
+      "price": "510 TL"
+    },
+    {
+      "name_en": "Balkan Style Meatballs",
+      "description_en": "160 gr. slices of grilled meatballs served on roasted eggplant purée; served with yoghurt, basil tomato sauce and grilled slices of pepper and tomato",
+      "ingredients_en": "",
+      "name_tr": "Balkan Köfte",
+      "description_tr": "Közlenmiş patlıcan püresi üzerinde 160 gr. ızgara köfte dilimleri, fesleğenli domates sosu, yoğurt ve közlenmiş biber ve domates dilimleri",
+      "ingredients_tr": "",
+      "price": "535 TL"
+    },
+    {
+      "name_en": "Grilled Meatballs",
+      "description_en": "200 gr. served with siyez (einkorn) pilaf with roast winter vegetables and rocket leaves with fresh herbs vinaigrette",
+      "ingredients_en": "",
+      "name_tr": "Izgara Köfte",
+      "description_tr": "Fırınlanmış kış sebzeli siyez pilavı ve taze otlu vinegretli roka yaprakları eşliğinde 200 gr. ızgara köfte",
+      "ingredients_tr": "",
+      "price": "515 TL"
+    },
+    {
+      "name_en": "Oven Baked Sea Bass",
+      "description_en": "120 gr. sea bass ovened with scallion, capers, slices of green olives, roasted almond, basil and slice of orange; served with roasted garlic mashed potatoes",
+      "ingredients_en": "",
+      "name_tr": "Zeytinli Levrek",
+      "description_tr": "Taze soğan, kapari, yeşil zeytin, badem, fesleğen ve portakal dilimi ile fırınlanmış 120 gr levrek filetosu; patates püresi eşliğinde",
+      "ingredients_tr": "",
+      "price": "550 TL"
+    },
+    {
+      "name_en": "Vegetable Dish Of The Day (Vg)",
+      "description_en": "",
+      "name_tr": "Günün Zeytinyağlısı (Vg)",
+      "description_tr": "Lütfen servis elemanımıza danışınız.",
+      "ingredients_tr": "Please ask the staff.",
+      "price": "280 TL"
+    }
+  ],
+  "desserts": [
+    {
+      "name_en": "Milk Pudding with Cardamom and Lemon Zest <span class=\"dietary-indicator\">Vt</span>",
+      "description_en": "without Ice-cream 330 TL\nwith Ice-cream 460 TL",
+      "name_tr": "Kakuleli Limon Kabuklu Fırın Sütlaç <span class=\"dietary-indicator\">Vt</span>",
+      "description_tr": "(Sade )     330 TL\n(Dondurmalı )    460 TL",
+      "price": "330 TL"
+    },
+    {
+      "name_en": "San Sebastian Cheesecake in a Bowl",
+      "description_en": "Sour Cherry Sauce / Chocolate Sauce / Plain",
+      "ingredients_en": "",
+      "name_tr": "Kasede San Sebastian Cheesecake",
+      "description_tr": "Vişne Sos / Çikolata Sos / Sade",
+      "ingredients_tr": "",
+      "price": "295 TL"
+    },
+    {
+      "name_en": "Wet Chocolate Cake",
+      "description_en": "Served with hot chocolate sauce and cream\nwithout Ice-cream 335 TL\nwith Ice-cream 465 TL",
+      "ingredients_en": "",
+      "name_tr": "Çikolatalı Islak Kek",
+      "description_tr": "Kafe Ara yapımı çikolata sos ve krema eşliğinde\n(Sade )     335 TL\n(Dondurmalı )    465 TL",
+      "ingredients_tr": "",
+      "price": "335 TL"
+    },
+    {
+      "name_en": "Gingerbread Cookie",
+      "description_en": "",
+      "ingredients_en": "",
+      "name_tr": "Zencefilli Kurabiye",
+      "description_tr": "",
+      "ingredients_tr": "",
+      "price": "45 TL/adet"
+    },
+    {
+      "name_en": "Şevki Usta's Double-Cream Ice Cream",
+      "description_en": "100% buffalo milk",
+      "ingredients_en": "",
+      "name_tr": "Şevki Usta'nın Kaymaklı Dondurması",
+      "description_tr": "%100 manda sütü",
+      "ingredients_tr": "",
+      "price": "130 TL / top"
+    }
+  ],
+  "coldBeverages": [
+    {
+      "name_en": "Freshly squeezed fruit juice 300 ml",
+      "description_en": "Orange / Grapefruit / Apple / Carrot / Mixed",
+      "ingredients_en": "",
+      "name_tr": "Taze Sıkılmış Meyve Suyu 300 ml",
+      "description_tr": "Portakal / Greyfurt / Elma / Havuç / Karışık",
+      "ingredients_tr": "",
+      "price": "160 TL"
+    },
+    {
+      "name_en": "Ginger Beer 330 ml",
+      "description_en": "Home-made",
+      "ingredients_en": "",
+      "name_tr": "Zencefil Gazozu 330 ml",
+      "description_tr": "Soda ile kendi yaptığımız yalancı zencefil gazozu",
+      "ingredients_tr": "",
+      "price": "145 TL"
+    },
+    {
+      "name_en": "Lemonade 330 ml",
+      "description_en": "Home-made",
+      "ingredients_en": "",
+      "name_tr": "Limonata 330 ml",
+      "description_tr": "Kafe Ara yapımı",
+      "ingredients_tr": "",
+      "price": "145 TL"
+    },
+    {
+      "name_en": "Uludağ Soda Pop 250 ml",
+      "description_en": "",
+      "ingredients_en": "",
+      "name_tr": "Uludağ Efsane Gazoz 250 ml",
+      "description_tr": "",
+      "ingredients_tr": "",
+      "price": "80 TL"
+    },
+    {
+      "name_en": "Coca Cola / Fanta / Sprite 300 ml",
+      "description_en": "",
+      "ingredients_en": "",
+      "name_tr": "Coca Cola 300 ml / Fanta / Sprite",
+      "description_tr": "",
+      "ingredients_tr": "",
+      "price": "85 TL"
+    },
+    {
+      "name_en": "Canned fruit juice 250 ml",
+      "description_en": "Cherry / Apricot / Peach",
+      "ingredients_en": "",
+      "name_tr": "Cappy Meyve Suyu 250 ml",
+      "description_tr": "Vişne / Kayısı / Şeftali",
+      "ingredients_tr": "",
+      "price": "85 TL"
+    },
+    {
+      "name_en": "Ayran 245 ml",
+      "description_en": "",
+      "ingredients_en": "",
+      "name_tr": "Ayran 245 ml",
+      "description_tr": "",
+      "ingredients_tr": "",
+      "price": "75 TL"
+    },
+    {
+      "name_en": "Sparkling Mineral Water 200 ml",
+      "description_en": "",
+      "ingredients_en": "",
+      "name_tr": "Maden Suyu 200 ml",
+      "description_tr": "",
+      "ingredients_tr": "",
+      "price": "70 TL"
+    },
+    {
+      "name_en": "Churchill",
+      "description_en": "",
+      "ingredients_en": "",
+      "name_tr": "Churchill",
+      "description_tr": "",
+      "ingredients_tr": "",
+      "price": "85 TL"
+    },
+    {
+      "name_en": "Spring Water 330 ml",
+      "description_en": "",
+      "ingredients_en": "",
+      "name_tr": "Kestane Su 330 ml",
+      "description_tr": "",
+      "ingredients_tr": "",
+      "price": "70 TL"
+    }
+  ],
+  "coffee": [
+    {
+      "name_en": "Turkish Coffee",
+      "description_en": "",
+      "ingredients_en": "",
+      "name_tr": "Türk Kahvesi",
+      "description_tr": "",
+      "ingredients_tr": "",
+      "price": "130 TL"
+    },
+    {
+      "name_en": "Turkish Coffee with Milk",
+      "description_en": "",
+      "ingredients_en": "",
+      "name_tr": "Sütlü Türk Kahvesi",
+      "description_tr": "",
+      "ingredients_tr": "",
+      "price": "150 TL"
+    },
+    {
+      "name_en": "Espresso",
+      "description_en": "",
+      "ingredients_en": "",
+      "name_tr": "Espresso",
+      "description_tr": "",
+      "ingredients_tr": "",
+      "price": "120 TL"
+    },
+    {
+      "name_en": "Americano",
+      "description_en": "",
+      "ingredients_en": "",
+      "name_tr": "Amerikano",
+      "description_tr": "",
+      "ingredients_tr": "",
+      "price": "130 TL"
+    },
+    {
+      "name_en": "Macchiato / Cortado",
+      "description_en": "",
+      "ingredients_en": "",
+      "name_tr": "Macchiato / Cortado",
+      "description_tr": "",
+      "ingredients_tr": "",
+      "price": "130 TL"
+    },
+    {
+      "name_en": "Cappuccino",
+      "description_en": "",
+      "ingredients_en": "",
+      "name_tr": "Cappuccino",
+      "description_tr": "",
+      "ingredients_tr": "",
+      "price": "160 TL"
+    },
+    {
+      "name_en": "Latte",
+      "description_en": "",
+      "ingredients_en": "",
+      "name_tr": "Latte",
+      "description_tr": "",
+      "ingredients_tr": "",
+      "price": "165 TL"
+    },
+    {
+      "name_en": "Caramel Vanilla Latte",
+      "description_en": "",
+      "ingredients_en": "",
+      "name_tr": "Karamelli Vanilyalı Latte",
+      "description_tr": "",
+      "ingredients_tr": "",
+      "price": "175 TL"
+    },
+    {
+      "name_en": "Hazelnut Chocolate Latte",
+      "description_en": "",
+      "ingredients_en": "",
+      "name_tr": "Fındık ve Çikolatalı Latte",
+      "description_tr": "",
+      "ingredients_tr": "",
+      "price": "175 TL"
+    },
+    {
+      "name_en": "Extra Shot",
+      "description_en": "",
+      "ingredients_en": "",
+      "name_tr": "Ekstra Shot",
+      "description_tr": "",
+      "ingredients_tr": "",
+      "price": "60 TL"
+    },
+    {
+      "name_en": "Filter Coffee",
+      "description_en": "",
+      "ingredients_en": "",
+      "name_tr": "Filtre Kahve",
+      "description_tr": "",
+      "ingredients_tr": "",
+      "price": "145TL"
+    },
+    {
+      "name_en": "Iced Latte",
+      "description_en": "",
+      "ingredients_en": "",
+      "name_tr": "Buzlu Latte",
+      "description_tr": "",
+      "ingredients_tr": "",
+      "price": "165 TL"
+    },
+    {
+      "name_en": "Caramel Vanilla Iced Latte",
+      "description_en": "",
+      "ingredients_en": "",
+      "name_tr": "Karamelli Vanilyalı Buzlu Latte",
+      "description_tr": "",
+      "ingredients_tr": "",
+      "price": "175 TL"
+    },
+    {
+      "name_en": "Hazelnut Chocolate Iced Latte",
+      "description_en": "",
+      "ingredients_en": "",
+      "name_tr": "Fındık ve Çikolatalı Buzlu Latte",
+      "description_tr": "",
+      "ingredients_tr": "",
+      "price": "175 TL"
+    },
+    {
+      "name_en": "Iced Americano",
+      "description_en": "",
+      "ingredients_en": "",
+      "name_tr": "Buzlu Amerikano",
+      "description_tr": "",
+      "ingredients_tr": "",
+      "price": "130 TL"
+    },
+    {
+      "name_en": "Iced Filter Coffee",
+      "description_en": "",
+      "ingredients_en": "",
+      "name_tr": "Buzlu Filtre Kahve",
+      "description_tr": "",
+      "ingredients_tr": "",
+      "price": "145 TL"
+    }
+  ],
+  "tea": [
+    {
+      "name_en": "Black Rize Tea",
+      "description_en": "",
+      "ingredients_en": "",
+      "name_tr": "Rize Çayı",
+      "description_tr": "",
+      "ingredients_tr": "",
+      "price": "60 TL"
+    },
+    {
+      "name_en": "Iced Apple Green Tea",
+      "description_en": "",
+      "ingredients_en": "",
+      "name_tr": "Buzlu Elmalı Yeşil Çay",
+      "description_tr": "",
+      "ingredients_tr": "",
+      "price": "145 TL"
+    },
+    {
+      "name_en": "Lipton Ice Tea 330 ml",
+      "description_en": "Lemon / Peach / Lemon Light / Peach Light",
+      "ingredients_en": "",
+      "name_tr": "Lipton Buzlu Çay 330 ml",
+      "description_tr": "Limon / Şeftali / Limon Light / Şeftali Light",
+      "ingredients_tr": "",
+      "price": "80 TL"
+    },
+    {
+      "name_en": "Natural Kinds of Herbs Tea",
+      "description_en": "Linden&Mint Tea, Sage Tea, Rose-hip Tea, Green Tea with Jasmin, Balm Tea, Fennel Tea, Camomile Tea, Relaxing Tea, İstanbul Tea",
+      "ingredients_en": "",
+      "name_tr": "Halis Bitki Çayları",
+      "description_tr": "Ihlamur&Taze Nane Çayı, Adaçayı, Kuşburnu Çayı, Yaseminli Yeşil Çay, Melisa Çayı, Rezene Çayı, Papatya Çayı, Rahatlama Çayı, Yeşil Çay, Yasemin Çayı,Taze Nane Çayı, Ihlamur Çayı",
+      "ingredients_tr": "",
+      "price": "170 TL"
+    },
+    {
+      "name_en": "Indian Chai / Iced Indian Chai",
+      "description_en": "Black tea brewed with cinnamon, cardomom, cloves, ginger and milk",
+      "ingredients_en": "Home-made",
+      "name_tr": "Hint Çayı / Buzlu Hint Çayı",
+      "description_tr": "Tarçın, karanfil, kakule, zencefil ve süt ile pişirilmiş siyah çay",
+      "ingredients_tr": "Kafe Ara yapımı",
+      "price": "150 TL"
+    },
+    {
+      "name_en": "Mixed Dried Fruits Tea",
+      "description_en": "Apple, orange, lemon, rose-hip, cinnamon",
+      "ingredients_en": "",
+      "name_tr": "Karışık Meyve Kurusu Çayı",
+      "description_tr": "Elma, portakal,limon, kuşburnu kurusu ve tarçınlı çay",
+      "ingredients_tr": "",
+      "price": "170 TL"
+    }
+  ]
+}
