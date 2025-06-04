@@ -1,7 +1,18 @@
 {
-  "name": "my-v0-project",
-  "version": "0.1.0",
+  "name": "ara-kafe-menu",
+  "version": "1.0.0",
   "private": true,
+  "description": "A modern menu website for Ara Kafe",
+  "author": "Ara Kafe",
+  "license": "MIT",
+  "homepage": "https://github.com/asafdubaa/ara-kafe-menu#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/asafdubaa/ara-kafe-menu.git"
+  },
+  "bugs": {
+    "url": "https://github.com/asafdubaa/ara-kafe-menu/issues"
+  },
   "eslintConfig": {
     "extends": [
       "next/core-web-vitals"
