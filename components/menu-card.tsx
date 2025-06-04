@@ -30,7 +30,7 @@ export function MenuCard() {
     tea: false,
   })
 
-  const [activeLanguage, setActiveLanguage] = useState<"en" | "tr">("en")
+  const [activeLanguage, setActiveLanguage] = useState<"en" | "tr">("tr")
   const [activeCategory, setActiveCategory] = useState<string | null>(null)
   const [showStory, setShowStory] = useState(false)
   const [showContact, setShowContact] = useState(false)
