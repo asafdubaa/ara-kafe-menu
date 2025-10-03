@@ -5,30 +5,10 @@ import { ChevronDown, ChevronUp, X, MapPin, Instagram, Globe, Phone } from "luci
 import { cn } from "@/lib/utils"
 import styles from "./menu-card.module.css"
 
-const categoryMapping = {
-  breakfast: "breakfast",
-  salads: "salads",
-  snacks: "snacks",
-  pastas: "pastas",
-  mainDishes: "mainDishes",
-  desserts: "desserts",
-  coldBeverages: "coldBeverages",
-  coffee: "coffee",
-  tea: "tea",
-}
+// Categories and titles are now dynamic
 
 export function MenuCard() {
-  const [expandedCategories, setExpandedCategories] = useState<Record<string, boolean>>({
-    breakfast: false,
-    salads: false,
-    snacks: false,
-    pastas: false,
-    mainDishes: false,
-    desserts: false,
-    coldBeverages: false,
-    coffee: false,
-    tea: false,
-  })
+  const [expandedCategories, setExpandedCategories] = useState<Record<string, boolean>>({})
 
   const [activeLanguage, setActiveLanguage] = useState<"en" | "tr">("tr")
   const [activeCategory, setActiveCategory] = useState<string | null>(null)
@@ -48,18 +28,9 @@ export function MenuCard() {
     price: string
   }
 
-  // Create refs for each category section
-  const categoryRefs = {
-    breakfast: useRef<HTMLDivElement>(null),
-    salads: useRef<HTMLDivElement>(null),
-    snacks: useRef<HTMLDivElement>(null),
-    pastas: useRef<HTMLDivElement>(null),
-    mainDishes: useRef<HTMLDivElement>(null),
-    desserts: useRef<HTMLDivElement>(null),
-    coldBeverages: useRef<HTMLDivElement>(null),
-    coffee: useRef<HTMLDivElement>(null),
-    tea: useRef<HTMLDivElement>(null),
-  }
+  // Dynamic refs map for categories
+  const categoryRefs = useRef<Record<string, HTMLDivElement | null>>({})
+  const [categoryTitles, setCategoryTitles] = useState<Record<string, { en: string; tr: string }>>({})
 
   useEffect(() => {
     const fetchMenuData = async () => {
@@ -67,12 +38,23 @@ export function MenuCard() {
       setError(null)
       
       try {
-        const response = await fetch('/api/menu')
-        if (!response.ok) {
-          throw new Error(`HTTP error! status: ${response.status}`)
+        const [menuRes, titlesRes] = await Promise.all([
+          fetch('/api/menu'),
+          fetch('/api/menu/titles')
+        ])
+        if (!menuRes.ok) {
+          throw new Error(`HTTP error! status: ${menuRes.status}`)
         }
-        const data = await response.json()
+        const data = await menuRes.json()
         setMenuData(data)
+        // Initialize expansion map for dynamic categories
+        const initExpanded: Record<string, boolean> = {}
+        Object.keys(data || {}).forEach((k) => { initExpanded[k] = false })
+        setExpandedCategories(initExpanded)
+        if (titlesRes.ok) {
+          const titles = await titlesRes.json()
+          setCategoryTitles(titles || {})
+        }
         
         // Also save to localStorage as fallback
         try {
@@ -160,8 +142,9 @@ export function MenuCard() {
 
     // Scroll to the category with a small delay to allow expansion
     setTimeout(() => {
-      if (categoryRefs[category as keyof typeof categoryRefs]?.current) {
-        categoryRefs[category as keyof typeof categoryRefs].current?.scrollIntoView({
+      const target = categoryRefs.current[category]
+      if (target) {
+        target.scrollIntoView({
           behavior: "smooth",
           block: "start",
         })
@@ -233,29 +216,11 @@ export function MenuCard() {
           {/* Navigation Bar */}
           <div className="mt-6 border-t border-b border-amber-950/30 py-3">
             <nav className="flex flex-wrap justify-center gap-x-6 gap-y-2 text-amber-950/80">
-              <button onClick={() => scrollToCategory("breakfast")}>
-                {activeLanguage === "en" ? "Breakfast" : "Kahvaltı"}
-              </button>
-              <button onClick={() => scrollToCategory("salads")}>
-                {activeLanguage === "en" ? "Salads" : "Salatalar"}
-              </button>
-              <button onClick={() => scrollToCategory("snacks")}>
-                {activeLanguage === "en" ? "Snacks" : "Atıştırmalıklar"}
-              </button>
-              <button onClick={() => scrollToCategory("pastas")}>
-                {activeLanguage === "en" ? "Pastas" : "Makarnalar"}
-              </button>
-              <button onClick={() => scrollToCategory("mainDishes")}>
-                {activeLanguage === "en" ? "Main Dishes" : "Ana Yemekler"}
-              </button>
-              <button onClick={() => scrollToCategory("desserts")}>
-                {activeLanguage === "en" ? "Desserts" : "Tatlılar"}
-              </button>
-              <button onClick={() => scrollToCategory("coldBeverages")}>
-                {activeLanguage === "en" ? "Cold Beverages" : "Soğuk İçecekler"}
-              </button>
-              <button onClick={() => scrollToCategory("coffee")}>{activeLanguage === "en" ? "Coffee" : "Kahve"}</button>
-              <button onClick={() => scrollToCategory("tea")}>{activeLanguage === "en" ? "Tea" : "Çay"}</button>
+              {Object.keys(menuData).map((key) => (
+                <button key={key} onClick={() => scrollToCategory(key)}>
+                  {getCategoryNavLabel(key, activeLanguage, categoryTitles)}
+                </button>
+              ))}
             </nav>
           </div>
         </div>
@@ -263,11 +228,11 @@ export function MenuCard() {
         {/* Menu Categories */}
         <div className="space-y-6">
           {Object.entries(menuData).map(([categoryKey, items]) => (
-            <div key={categoryKey} ref={categoryRefs[categoryKey as keyof typeof categoryRefs]}>
+            <div key={categoryKey} ref={(el) => { categoryRefs.current[categoryKey] = el }}>
               <CategorySection
-                title={getCategoryTitle(categoryKey, activeLanguage)}
+                title={getCategoryTitle(categoryKey, activeLanguage, categoryTitles)}
                 items={items}
-                isExpanded={expandedCategories[categoryKey]}
+                isExpanded={Boolean(expandedCategories[categoryKey])}
                 onToggle={() => toggleCategory(categoryKey)}
                 activeLanguage={activeLanguage}
               />
@@ -588,8 +553,15 @@ function CategorySection({ title, items, isExpanded, onToggle, activeLanguage }:
   )
 }
 
-const getCategoryTitle = (categoryKey: string, language: "en" | "tr") => {
-  const titles = {
+const getCategoryTitle = (
+  categoryKey: string,
+  language: "en" | "tr",
+  titles: Record<string, { en: string; tr: string }>
+) => {
+  const t = titles[categoryKey]
+  if (t) return (t[language] || t.en || categoryKey).toUpperCase()
+  // Fallback to default known titles for sections
+  const defaults: Record<string, { en: string; tr: string }> = {
     breakfast: { en: "BREAKFAST", tr: "KAHVALTI" },
     salads: { en: "SALADS", tr: "SALATALAR" },
     snacks: { en: "SNACKS", tr: "ATIŞTIRMALIKLAR" },
@@ -600,5 +572,31 @@ const getCategoryTitle = (categoryKey: string, language: "en" | "tr") => {
     coffee: { en: "COFFEE", tr: "KAHVE" },
     tea: { en: "TEA", tr: "ÇAY" },
   }
-  return titles[categoryKey as keyof typeof titles]?.[language] || categoryKey.toUpperCase()
+  const d = defaults[categoryKey]
+  if (d) return (d[language] || d.en).toUpperCase()
+  return categoryKey.toUpperCase()
+}
+
+const getCategoryNavLabel = (
+  categoryKey: string,
+  language: "en" | "tr",
+  titles: Record<string, { en: string; tr: string }>
+) => {
+  // Prefer custom titles without forced uppercase for nav
+  const t = titles[categoryKey]
+  if (t) return t[language] || t.en || categoryKey
+  // Fallback defaults (human-readable for nav)
+  const defaults: Record<string, { en: string; tr: string }> = {
+    breakfast: { en: "Breakfast", tr: "Kahvaltı" },
+    salads: { en: "Salads", tr: "Salatalar" },
+    snacks: { en: "Snacks", tr: "Atıştırmalıklar" },
+    pastas: { en: "Pastas", tr: "Makarnalar" },
+    mainDishes: { en: "Main Dishes", tr: "Ana Yemekler" },
+    desserts: { en: "Desserts", tr: "Tatlılar" },
+    coldBeverages: { en: "Cold Beverages", tr: "Soğuk İçecekler" },
+    coffee: { en: "Coffee", tr: "Kahve" },
+    tea: { en: "Tea", tr: "Çay" },
+  }
+  const d = defaults[categoryKey]
+  return d ? (d[language] || d.en) : categoryKey
 }

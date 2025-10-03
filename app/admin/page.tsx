@@ -12,14 +12,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog"
 import menuDataJson from "@/data/menu-data.json"
 
-const categoryTitles: Record<string, string> = {
-  breakfast: "Breakfast",
-  main_courses: "Main Courses",
-  appetizers: "Appetizers",
-  desserts: "Desserts",
-  drinks: "Drinks",
-  // Add more categories as needed
-}
+// Categories will be derived dynamically from menuData keys
 
 type MenuItem = {
   name_en: string
@@ -76,6 +69,46 @@ const formatPrice = (price: string): string => {
 
 export default function AdminPage() {
   const router = useRouter()
+  const [adminLang, setAdminLang] = useState<"en" | "tr">(() => {
+    if (typeof window !== 'undefined') {
+      const saved = localStorage.getItem('araAdminLang')
+      if (saved === 'en' || saved === 'tr') return saved
+    }
+    return 'en'
+  })
+  const t = (key: string): string => {
+    const dict: Record<string, { en: string; tr: string }> = {
+      adminTitle: { en: 'Ara Kafe Admin', tr: 'Ara Kafe Yönetim' },
+      adminSubtitle: { en: 'Menu Management System', tr: 'Menü Yönetim Sistemi' },
+      saveChanges: { en: 'Save Changes', tr: 'Değişiklikleri Kaydet' },
+      saving: { en: 'Saving...', tr: 'Kaydediliyor...' },
+      logout: { en: 'Logout', tr: 'Çıkış Yap' },
+      menuCategories: { en: 'Menu Categories', tr: 'Menü Kategorileri' },
+      addCategory: { en: 'Add Category', tr: 'Kategori Ekle' },
+      addNewItem: { en: 'Add New Item', tr: 'Yeni Ürün Ekle' },
+      addNewCategory: { en: 'Add New Category', tr: 'Yeni Kategori Ekle' },
+      categoryKey: { en: 'Category key', tr: 'Kategori anahtarı' },
+      useLowercaseHint: { en: 'Use lowercase letters and numbers only.', tr: 'Sadece küçük harf ve rakam kullanın.' },
+      englishTitle: { en: 'English title', tr: 'İngilizce başlık' },
+      turkishTitle: { en: 'Turkish title', tr: 'Türkçe başlık' },
+      cancel: { en: 'Cancel', tr: 'İptal' },
+      add: { en: 'Add', tr: 'Ekle' },
+      addMenuItemTitle: { en: 'Add New Menu Item', tr: 'Yeni Menü Ürünü Ekle' },
+      selectCategory: { en: 'Select category', tr: 'Kategori seçin' },
+      nameEn: { en: 'Name (English)', tr: 'Ad (İngilizce)' },
+      nameTr: { en: 'Name (Turkish)', tr: 'Ad (Türkçe)' },
+      descEn: { en: 'Description (English)', tr: 'Açıklama (İngilizce)' },
+      descTr: { en: 'Description (Turkish)', tr: 'Açıklama (Türkçe)' },
+      ingEn: { en: 'Ingredients (English)', tr: 'İçindekiler (İngilizce)' },
+      ingTr: { en: 'Ingredients (Turkish)', tr: 'İçindekiler (Türkçe)' },
+      price: { en: 'Price', tr: 'Fiyat' },
+      remove: { en: 'Remove', tr: 'Kaldır' },
+      language: { en: 'Language', tr: 'Dil' },
+      english: { en: 'English', tr: 'İngilizce' },
+      turkish: { en: 'Turkish', tr: 'Türkçe' },
+    }
+    return dict[key]?.[adminLang] ?? key
+  }
   const [menuData, setMenuData] = useState<MenuData>(() => {
     // Initialize with empty data structure to prevent undefined errors
     const initialData: MenuData = {}
@@ -102,6 +135,11 @@ export default function AdminPage() {
     ingredients_tr: "",
     price: ""
   })
+  const [showAddCategoryDialog, setShowAddCategoryDialog] = useState(false)
+  const [newCategoryName, setNewCategoryName] = useState("")
+  const [categoryTitles, setCategoryTitles] = useState<Record<string, { en: string; tr: string }>>({})
+  const [newCategoryTitleEn, setNewCategoryTitleEn] = useState("")
+  const [newCategoryTitleTr, setNewCategoryTitleTr] = useState("")
 
   // Get admin password from environment variables
   const adminPassword = process.env.NEXT_PUBLIC_ADMIN_PASSWORD || ''
@@ -174,6 +212,17 @@ export default function AdminPage() {
             console.error("Error loading saved menu data:", error)
           }
         }
+
+        // Load category titles
+        try {
+          const res = await fetch('/api/menu/titles')
+          if (res.ok) {
+            const titles = await res.json()
+            setCategoryTitles(titles || {})
+          }
+        } catch (e) {
+          console.warn('Failed to load category titles')
+        }
       } catch (error) {
         console.error('Auth check failed:', error)
         router.push('/admin/login')
@@ -183,18 +232,91 @@ export default function AdminPage() {
     }
     
     checkAuth()
-  }, [])
+    if (typeof window !== 'undefined') {
+      localStorage.setItem('araAdminLang', adminLang)
+    }
+  }, [adminLang])
 
-  const categoryTitles = {
-    breakfast: { en: "Breakfast", tr: "Kahvaltı" },
-    salads: { en: "Salads", tr: "Salatalar" },
-    snacks: { en: "Snacks", tr: "Atıştırmalıklar" },
-    pastas: { en: "Pastas", tr: "Makarnalar" },
-    mainDishes: { en: "Main Dishes", tr: "Ana Yemekler" },
-    desserts: { en: "Desserts", tr: "Tatlılar" },
-    coldBeverages: { en: "Cold Beverages", tr: "Soğuk İçecekler" },
-    coffee: { en: "Coffee", tr: "Kahve" },
-    tea: { en: "Tea", tr: "Çay" },
+  const handleAddCategory = async () => {
+    const key = newCategoryName
+      .trim()
+      .toLowerCase()
+      .replace(/[^a-z0-9_\-\s]/g, '')
+      .replace(/\s+/g, '')
+
+    if (!key) return
+    if (menuData[key]) {
+      setError('Category already exists')
+      return
+    }
+
+    const updated = { ...menuData, [key]: [] }
+    setMenuData(updated)
+    setShowAddCategoryDialog(false)
+    setNewCategoryName("")
+    const updatedTitles = {
+      ...categoryTitles,
+      [key]: {
+        en: newCategoryTitleEn.trim() || key,
+        tr: newCategoryTitleTr.trim() || newCategoryTitleEn.trim() || key,
+      }
+    }
+    setCategoryTitles(updatedTitles)
+    setNewCategoryTitleEn("")
+    setNewCategoryTitleTr("")
+
+    // Persist immediately
+    try {
+      setIsSaving(true)
+      const [menuRes, titlesRes] = await Promise.all([
+        fetch('/api/menu', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(updated),
+        }),
+        fetch('/api/menu/titles', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(updatedTitles),
+        })
+      ])
+      const [menuResult, titlesResult] = await Promise.all([menuRes.json(), titlesRes.json()])
+      if (menuRes.ok && menuResult.success && titlesRes.ok && titlesResult.success) {
+        setSaveStatus({ type: 'success', message: 'Category added' })
+      } else {
+        setSaveStatus({ type: 'error', message: (menuResult.message || titlesResult.message) || 'Failed to save new category' })
+      }
+    } catch (e) {
+      setSaveStatus({ type: 'error', message: 'Failed to save new category' })
+    } finally {
+      setIsSaving(false)
+    }
+  }
+
+  const handleRemoveCategory = async (categoryKey: string) => {
+    if (!confirm('Remove this category and all its items?')) return
+    const updated = { ...menuData }
+    delete updated[categoryKey]
+    setMenuData(updated)
+    const updatedTitles = { ...categoryTitles }
+    delete updatedTitles[categoryKey]
+    setCategoryTitles(updatedTitles)
+    try {
+      setIsSaving(true)
+      const [menuRes, titlesRes] = await Promise.all([
+        fetch('/api/menu', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(updated) }),
+        fetch('/api/menu/titles', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(updatedTitles) })
+      ])
+      if (menuRes.ok && titlesRes.ok) {
+        setSaveStatus({ type: 'success', message: 'Category removed' })
+      } else {
+        setSaveStatus({ type: 'error', message: 'Failed to remove category' })
+      }
+    } catch (e) {
+      setSaveStatus({ type: 'error', message: 'Failed to remove category' })
+    } finally {
+      setIsSaving(false)
+    }
   }
 
   const handleAddItem = () => {
@@ -412,10 +534,24 @@ export default function AdminPage() {
         {/* Header */}
         <div className="flex justify-between items-center mb-8 p-6 border-4 border-double border-amber-950/40 rounded-lg bg-[#f5e8c9] shadow-lg">
           <div>
-            <h1 className="text-4xl font-serif text-amber-950">Ara Kafe Admin</h1>
-            <p className="text-amber-950/70">Menu Management System</p>
+            <h1 className="text-4xl font-serif text-amber-950">{t('adminTitle')}</h1>
+            <p className="text-amber-950/70">{t('adminSubtitle')}</p>
           </div>
           <div className="flex items-center gap-4">
+            <div className="inline-flex rounded-md overflow-hidden border border-amber-950/40">
+              <button
+                onClick={() => setAdminLang('en')}
+                className={`px-3 py-1 ${adminLang === 'en' ? 'bg-amber-950 text-[#f5e8c9]' : 'bg-[#f5e8c9] text-amber-950 hover:bg-amber-100'}`}
+              >
+                {t('english')}
+              </button>
+              <button
+                onClick={() => setAdminLang('tr')}
+                className={`px-3 py-1 ${adminLang === 'tr' ? 'bg-amber-950 text-[#f5e8c9]' : 'bg-[#f5e8c9] text-amber-950 hover:bg-amber-100'}`}
+              >
+                {t('turkish')}
+              </button>
+            </div>
             <div className="flex items-center gap-2">
               <Button 
                 onClick={handleSave} 
@@ -428,12 +564,12 @@ export default function AdminPage() {
                       <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
                       <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
                     </svg>
-                    <span>Saving...</span>
+                    <span>{t('saving')}</span>
                   </>
                 ) : (
                   <>
                     <Save className="h-4 w-4" />
-                    <span>Save Changes</span>
+                    <span>{t('saveChanges')}</span>
                   </>
                 )}
               </Button>
@@ -449,7 +585,7 @@ export default function AdminPage() {
               className="border-amber-950 text-amber-950 flex items-center gap-2"
             >
               <EyeOff className="h-4 w-4" />
-              <span>Logout</span>
+              <span>{t('logout')}</span>
             </Button>
           </div>
         </div>
@@ -457,27 +593,77 @@ export default function AdminPage() {
         {/* Main Content */}
         <div className="border-4 border-double border-amber-950/40 rounded-lg p-6 bg-[#f5e8c9] shadow-lg">
           <div className="flex justify-between items-center mb-6">
-            <h2 className="text-2xl font-serif text-amber-950">Menu Categories</h2>
+            <h2 className="text-2xl font-serif text-amber-950">{t('menuCategories')}</h2>
+            <div className="flex gap-2">
+              <Dialog open={showAddCategoryDialog} onOpenChange={setShowAddCategoryDialog}>
+                <DialogTrigger asChild>
+                  <Button className="bg-amber-950 text-[#f5e8c9] hover:bg-amber-900">
+                    <Plus className="h-4 w-4 mr-2" />
+                    {t('addCategory')}
+                  </Button>
+                </DialogTrigger>
+                <DialogContent className="max-w-md bg-[#f5e8c9] border-4 border-double border-amber-950/40">
+                  <DialogHeader>
+                    <DialogTitle className="text-2xl font-serif text-amber-950">{t('addNewCategory')}</DialogTitle>
+                  </DialogHeader>
+                  <div className="space-y-4">
+                    <div>
+                      <label className="text-sm font-medium text-amber-950">{t('categoryKey')}</label>
+                      <Input
+                        value={newCategoryName}
+                        onChange={(e) => setNewCategoryName(e.target.value)}
+                        placeholder="e.g., smoothies"
+                        className="border-amber-950/40"
+                      />
+                      <p className="text-xs text-amber-950/60 mt-1">{t('useLowercaseHint')}</p>
+                    </div>
+                    <div className="grid grid-cols-2 gap-4">
+                      <div>
+                        <label className="text-sm font-medium text-amber-950">{t('englishTitle')}</label>
+                        <Input
+                          value={newCategoryTitleEn}
+                          onChange={(e) => setNewCategoryTitleEn(e.target.value)}
+                          placeholder="Smoothies"
+                          className="border-amber-950/40"
+                        />
+                      </div>
+                      <div>
+                        <label className="text-sm font-medium text-amber-950">{t('turkishTitle')}</label>
+                        <Input
+                          value={newCategoryTitleTr}
+                          onChange={(e) => setNewCategoryTitleTr(e.target.value)}
+                          placeholder="Smoothie"
+                          className="border-amber-950/40"
+                        />
+                      </div>
+                    </div>
+                    <div className="flex justify-end gap-2">
+                      <Button variant="outline" onClick={() => setShowAddCategoryDialog(false)}>{t('cancel')}</Button>
+                      <Button onClick={handleAddCategory} className="bg-amber-950 text-[#f5e8c9]">{t('add')}</Button>
+                    </div>
+                  </div>
+                </DialogContent>
+              </Dialog>
             <Dialog open={showAddDialog} onOpenChange={setShowAddDialog}>
               <DialogTrigger asChild>
                 <Button className="bg-amber-950 text-[#f5e8c9] hover:bg-amber-900">
                   <Plus className="h-4 w-4 mr-2" />
-                  Add New Item
+                    {t('addNewItem')}
                 </Button>
               </DialogTrigger>
               <DialogContent className="max-w-2xl bg-[#f5e8c9] border-4 border-double border-amber-950/40">
                 <DialogHeader>
-                  <DialogTitle className="text-2xl font-serif text-amber-950">Add New Menu Item</DialogTitle>
+                    <DialogTitle className="text-2xl font-serif text-amber-950">{t('addMenuItemTitle')}</DialogTitle>
                 </DialogHeader>
                 <div className="space-y-4">
                   <Select value={selectedCategory} onValueChange={setSelectedCategory}>
                     <SelectTrigger className="border-amber-950/40">
-                      <SelectValue placeholder="Select category" />
+                        <SelectValue placeholder={t('selectCategory')} />
                     </SelectTrigger>
                     <SelectContent>
-                      {Object.keys(categoryTitles).map((category) => (
+                        {Object.keys(menuData).map((category) => (
                         <SelectItem key={category} value={category}>
-                          {categoryTitles[category as keyof typeof categoryTitles].en}
+                            {formatName(category)}
                         </SelectItem>
                       ))}
                     </SelectContent>
@@ -485,7 +671,7 @@ export default function AdminPage() {
 
                   <div className="grid grid-cols-2 gap-4">
                     <div>
-                      <label className="text-sm font-medium text-amber-950">Name (English)</label>
+                      <label className="text-sm font-medium text-amber-950">{t('nameEn')}</label>
                       <Input
                         value={newItem.name_en}
                         onChange={handleInputChange}
@@ -494,7 +680,7 @@ export default function AdminPage() {
                       />
                     </div>
                     <div>
-                      <label className="text-sm font-medium text-amber-950">Name (Turkish)</label>
+                      <label className="text-sm font-medium text-amber-950">{t('nameTr')}</label>
                       <Input
                         value={newItem.name_tr}
                         onChange={handleInputChange}
@@ -506,7 +692,7 @@ export default function AdminPage() {
 
                   <div className="grid grid-cols-2 gap-4">
                     <div>
-                      <label className="text-sm font-medium text-amber-950">Description (English)</label>
+                      <label className="text-sm font-medium text-amber-950">{t('descEn')}</label>
                       <Textarea
                         value={newItem.description_en}
                         onChange={handleInputChange}
@@ -515,7 +701,7 @@ export default function AdminPage() {
                       />
                     </div>
                     <div>
-                      <label className="text-sm font-medium text-amber-950">Description (Turkish)</label>
+                      <label className="text-sm font-medium text-amber-950">{t('descTr')}</label>
                       <Textarea
                         value={newItem.description_tr}
                         onChange={handleInputChange}
@@ -527,7 +713,7 @@ export default function AdminPage() {
 
                   <div className="grid grid-cols-2 gap-4">
                     <div>
-                      <label className="text-sm font-medium text-amber-950">Ingredients (English)</label>
+                      <label className="text-sm font-medium text-amber-950">{t('ingEn')}</label>
                       <Input
                         value={newItem.ingredients_en}
                         onChange={handleInputChange}
@@ -536,7 +722,7 @@ export default function AdminPage() {
                       />
                     </div>
                     <div>
-                      <label className="text-sm font-medium text-amber-950">Ingredients (Turkish)</label>
+                      <label className="text-sm font-medium text-amber-950">{t('ingTr')}</label>
                       <Input
                         value={newItem.ingredients_tr}
                         onChange={handleInputChange}
@@ -547,7 +733,7 @@ export default function AdminPage() {
                   </div>
 
                   <div className="space-y-2">
-                    <label className="text-sm font-medium text-amber-950">Price</label>
+                    <label className="text-sm font-medium text-amber-950">{t('price')}</label>
                     <div className="relative">
                       <Input
                         value={cleanPrice(newItem.price)}
@@ -564,15 +750,16 @@ export default function AdminPage() {
 
                   <div className="flex justify-end gap-2">
                     <Button variant="outline" onClick={() => setShowAddDialog(false)}>
-                      Cancel
+                      {t('cancel')}
                     </Button>
                     <Button onClick={handleAddItem} className="bg-amber-950 text-[#f5e8c9]">
-                      Add Item
+                      {t('addNewItem')}
                     </Button>
                   </div>
                 </div>
               </DialogContent>
             </Dialog>
+            </div>
           </div>
 
           <Tabs defaultValue={Object.keys(menuData)[0]} className="w-full">
@@ -583,7 +770,7 @@ export default function AdminPage() {
                   value={category}
                   className="text-xs data-[state=active]:bg-amber-950 data-[state=active]:text-[#f5e8c9]"
                 >
-                  {categoryTitles[category as keyof typeof categoryTitles]?.en || category}
+                  {categoryTitles[category]?.en || formatName(category)}
                 </TabsTrigger>
               ))}
             </TabsList>
@@ -591,9 +778,14 @@ export default function AdminPage() {
             {Object.entries(menuData).map(([category, items]) => (
               <TabsContent key={category} value={category} className="mt-6">
                 <div className="space-y-4">
-                  <h3 className="text-xl font-serif text-amber-950 border-b border-amber-950/30 pb-2">
-                    {categoryTitles[category as keyof typeof categoryTitles]?.en || category} ({items.length} items)
-                  </h3>
+                  <div className="flex items-center justify-between border-b border-amber-950/30 pb-2">
+                    <h3 className="text-xl font-serif text-amber-950">
+                      {categoryTitles[category]?.en || formatName(category)} ({items.length} items)
+                    </h3>
+                    <Button size="sm" variant="outline" className="border-red-400 text-red-600 hover:bg-red-50" onClick={() => handleRemoveCategory(category)}>
+                      <Trash2 className="h-3 w-3 mr-1" /> Remove
+                    </Button>
+                  </div>
 
                   {items.map((item, index) => (
                     <Card key={index} className="border-amber-950/40 bg-[#f5e8c9]/50">
@@ -655,13 +847,13 @@ export default function AdminPage() {
         <Dialog open={showEditDialog} onOpenChange={setShowEditDialog}>
           <DialogContent className="max-w-2xl bg-[#f5e8c9] border-4 border-double border-amber-950/40">
             <DialogHeader>
-              <DialogTitle className="text-2xl font-serif text-amber-950">Edit Menu Item</DialogTitle>
+              <DialogTitle className="text-2xl font-serif text-amber-950">{t('addMenuItemTitle')}</DialogTitle>
             </DialogHeader>
             {editingItem && (
               <div className="space-y-4">
                 <div className="grid grid-cols-2 gap-4">
                   <div>
-                    <label className="text-sm font-medium text-amber-950">Name (English)</label>
+                    <label className="text-sm font-medium text-amber-950">{t('nameEn')}</label>
                     <Input
                       value={editingItem.item.name_en}
                       onChange={handleEditInputChange}
@@ -670,7 +862,7 @@ export default function AdminPage() {
                     />
                   </div>
                   <div>
-                    <label className="text-sm font-medium text-amber-950">Name (Turkish)</label>
+                    <label className="text-sm font-medium text-amber-950">{t('nameTr')}</label>
                     <Input
                       value={editingItem.item.name_tr}
                       onChange={handleEditInputChange}
@@ -682,7 +874,7 @@ export default function AdminPage() {
 
                 <div className="grid grid-cols-2 gap-4">
                   <div>
-                    <label className="text-sm font-medium text-amber-950">Description (English)</label>
+                    <label className="text-sm font-medium text-amber-950">{t('descEn')}</label>
                     <Textarea
                       value={editingItem.item.description_en}
                       onChange={handleEditInputChange}
@@ -691,7 +883,7 @@ export default function AdminPage() {
                     />
                   </div>
                   <div className="space-y-2">
-                    <label className="text-sm font-medium text-amber-950">Description (Turkish)</label>
+                    <label className="text-sm font-medium text-amber-950">{t('descTr')}</label>
                     <Textarea
                       value={editingItem.item.description_tr}
                       onChange={handleEditInputChange}
@@ -703,7 +895,7 @@ export default function AdminPage() {
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div className="space-y-2">
-                    <label className="text-sm font-medium text-amber-950">Ingredients (English)</label>
+                    <label className="text-sm font-medium text-amber-950">{t('ingEn')}</label>
                     <Input
                       value={editingItem.item.ingredients_en}
                       onChange={handleEditInputChange}
@@ -712,7 +904,7 @@ export default function AdminPage() {
                     />
                   </div>
                   <div className="space-y-2">
-                    <label className="text-sm font-medium text-amber-950">Ingredients (Turkish)</label>
+                    <label className="text-sm font-medium text-amber-950">{t('ingTr')}</label>
                     <Input
                       value={editingItem.item.ingredients_tr}
                       onChange={handleEditInputChange}
@@ -723,7 +915,7 @@ export default function AdminPage() {
                 </div>
 
                 <div className="space-y-2">
-                  <label className="text-sm font-medium text-amber-950">Price</label>
+                  <label className="text-sm font-medium text-amber-950">{t('price')}</label>
                   <div className="relative">
                     <Input
                       value={cleanPrice(editingItem.item.price)}
@@ -739,10 +931,10 @@ export default function AdminPage() {
                 </div>
                 <div className="flex justify-end gap-2 pt-4">
                   <Button type="button" variant="outline" onClick={() => setShowEditDialog(false)}>
-                    Cancel
+                    {t('cancel')}
                   </Button>
                   <Button type="button" onClick={handleUpdateItem}>
-                    Save Changes
+                    {t('saveChanges')}
                   </Button>
                 </div>
               </div>

@@ -1,4 +1,6 @@
 import { Redis } from "@upstash/redis"
+import { writeFile } from 'fs/promises'
+import { join } from 'path'
 
 interface MenuItem {
   name_en: string
@@ -12,6 +14,10 @@ interface MenuItem {
 
 export interface MenuData {
   [category: string]: MenuItem[]
+}
+
+export interface CategoryTitlesMap {
+  [category: string]: { en: string; tr: string }
 }
 
 // Check if Upstash Redis environment variables are available
@@ -44,6 +50,7 @@ if (hasRedisConfig) {
 }
 
 const MENU_KEY = "ara-kafe-menu-data"
+const MENU_TITLES_KEY = "ara-kafe-menu-titles"
 
 export const getMenuData = async (): Promise<MenuData> => {
   // Try Redis first if available
@@ -106,6 +113,20 @@ export const saveMenuData = async (menuData: MenuData) => {
     }
   }
 
+  // Additionally, try to persist to data/menu-data.json when running on the server (useful in dev/self-hosted)
+  if (typeof window === "undefined") {
+    try {
+      const filePath = join(process.cwd(), 'data', 'menu-data.json')
+      await writeFile(filePath, JSON.stringify(menuData, null, 2), 'utf8')
+      console.log('Menu data saved to data/menu-data.json')
+    } catch (fsErr) {
+      const fsError = fsErr instanceof Error ? fsErr.message : 'Unknown error writing JSON file'
+      console.warn('Failed to write data/menu-data.json (likely read-only runtime):', fsError)
+      // Do not override existing error unless none exists
+      if (!error) error = fsError
+    }
+  }
+
   const storageLocation = redisSaved ? "Redis" : "localStorage"
   let message = ''
   
@@ -123,5 +144,61 @@ export const saveMenuData = async (menuData: MenuData) => {
     storageLocation: storageLocation,
     message: message,
     error: error || undefined
+  }
+}
+
+export const getCategoryTitles = async (): Promise<CategoryTitlesMap> => {
+  // Try Redis first
+  if (redis) {
+    try {
+      const data = await redis.get<CategoryTitlesMap>(MENU_TITLES_KEY)
+      if (data) {
+        return data
+      }
+    } catch (error) {
+      console.error("Redis fetch for titles failed:", error)
+    }
+  }
+
+  // Try to load from file system as default
+  try {
+    const defaultTitles = await import("@/data/category-titles.json")
+    return defaultTitles.default as CategoryTitlesMap
+  } catch (e) {
+    console.warn('No default category-titles.json found, returning empty titles map')
+    return {}
+  }
+}
+
+export const saveCategoryTitles = async (titles: CategoryTitlesMap) => {
+  let error: string | null = null
+
+  // Save to Redis if available
+  if (redis) {
+    try {
+      await redis.set(MENU_TITLES_KEY, titles)
+      console.log("Category titles saved to Redis")
+    } catch (err) {
+      error = err instanceof Error ? err.message : 'Unknown error saving titles to Redis'
+      console.error("Redis save for titles failed:", error)
+    }
+  }
+
+  // Persist to file on server
+  if (typeof window === "undefined") {
+    try {
+      const filePath = join(process.cwd(), 'data', 'category-titles.json')
+      await writeFile(filePath, JSON.stringify(titles, null, 2), 'utf8')
+      console.log('Category titles saved to data/category-titles.json')
+    } catch (fsErr) {
+      const fsError = fsErr instanceof Error ? fsErr.message : 'Unknown error writing titles JSON file'
+      console.warn('Failed to write data/category-titles.json:', fsError)
+      if (!error) error = fsError
+    }
+  }
+
+  return {
+    success: !error,
+    message: error ? `Warning: ${error}` : 'Titles saved successfully'
   }
 }
