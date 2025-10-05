@@ -1,6 +1,4 @@
 import { Redis } from "@upstash/redis"
-import { writeFile } from 'fs/promises'
-import { join } from 'path'
 
 interface MenuItem {
   name_en: string
@@ -116,7 +114,9 @@ export const saveMenuData = async (menuData: MenuData) => {
   // Additionally, try to persist to data/menu-data.json when running on the server (useful in dev/self-hosted)
   if (typeof window === "undefined") {
     try {
-      const filePath = join(process.cwd(), 'data', 'menu-data.json')
+      const { writeFile } = await import('fs/promises')
+      const pathModule = await import('path')
+      const filePath = pathModule.join(process.cwd(), 'data', 'menu-data.json')
       await writeFile(filePath, JSON.stringify(menuData, null, 2), 'utf8')
       console.log('Menu data saved to data/menu-data.json')
     } catch (fsErr) {
@@ -187,7 +187,9 @@ export const saveCategoryTitles = async (titles: CategoryTitlesMap) => {
   // Persist to file on server
   if (typeof window === "undefined") {
     try {
-      const filePath = join(process.cwd(), 'data', 'category-titles.json')
+      const { writeFile } = await import('fs/promises')
+      const pathModule = await import('path')
+      const filePath = pathModule.join(process.cwd(), 'data', 'category-titles.json')
       await writeFile(filePath, JSON.stringify(titles, null, 2), 'utf8')
       console.log('Category titles saved to data/category-titles.json')
     } catch (fsErr) {

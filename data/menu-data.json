@@ -93,49 +93,56 @@
       "name_tr": "Çıtır Tavuk Salatası",
       "description_en": "Mixed greens served with fried 180 gr. chicken pieces coated with spicy corn chips, marinated sun dried tomato, capers, green olives from Edremit, radish, lentil sprouts and fresh herbs vinaigrette",
       "description_tr": "Mısır gevreği ile kaplanıp kızartılmış 180 gr tavuk göğsü dilimleri, marine edilmiş kuru domates, kapari, yeşil kırma Edremit zeytini, turp dilimleri, mercimek filizi, karışık yeşillikler ve taze otlu vinegret",
-      "price": "395"
+      "price": "430"
     },
     {
       "name_en": "Honey Mustard Chicken Salad",
       "name_tr": "Hardal Soslu Tavuk Salatası",
       "description_en": "230 gr. pan-fried slices of chicken marinated with honey mustard sauce served with mixed greens, quinoa, pomegranate and fresh herbs vinaigrette",
       "description_tr": "Ballı hardal sos ile marine edilip döküm tavada pişirilmiş 230 gr tavuk budu dilimleri, kinoa, nar, karışık yeşillikler ve taze otlu vinegret",
-      "price": "425 TL"
+      "price": "460"
     },
     {
       "name_en": "Black Eyed Pea and Courgette Salad with Grilled Sea Bass",
       "name_tr": "Levrekli Kuru Börülce ve Izgara Kabak Salatası",
       "description_en": "Cast iron grilled fillet of sea bass (120 gr.) served on grilled ribbons of courgette, black eyed peas, green olives from Edremit, fresh chili flakes, scallion, rocket and mint leaves and fresh herbs vinaigrette",
       "description_tr": "Izgara kabak şeritleri, haşlanmış kuru börülce, yeşil kırma Edremit zeytini, acı Meksika biberi parçacıkları, yeşil soğan, roka ve nane yaprakları üzerinde döküm tavada ızgara edilmiş 120 gr levrek filetosu ve taze otlu vinegret",
-      "price": "470 TL"
+      "price": "495"
     },
     {
       "name_en": "Farro Salad with Pomegranate Sauce Vt",
       "name_tr": "Nar Ekşili Buğday ve Baklagil Salatası Vt",
       "description_en": "Farro salad with black eyed peas, green lentil, fresh herbs, scallion, rocket leaves, lentil sprouts, pomegranate, toasted almond, crumbled white cheese and special pomegranate sauce",
       "description_tr": "Haşlanmış buğday, kuru börülce ve yeşil mercimek ile karıştırılmış maydanoz, nane, fesleğen, roka, taze soğan, nar, mercimek filizi, kavrulmuş badem, ufalanmış Ezine beyaz peyniri ve özel nar ekşisi sosu",
-      "price": "390 TL"
+      "price": "430"
     },
     {
       "name_en": "Goat Cheese Salad with Almonds Vt",
       "name_tr": "Bademli Keçi Peynirli Salata Vt",
       "description_en": "Mixed greens served with warm goat cheese, roasted almond, dried barberry and special pomegranate sauce",
       "description_tr": "Ilık keçi peyniri, kavrulmuş badem, nar, özel nar ekşisi sosu ve karışık yeşillikler",
-      "price": "390 TL"
+      "price": "430"
     },
     {
       "name_en": "Ara Salad Vt/Vg",
       "name_tr": "Ara Salata Vt/Vg",
       "description_en": "Yedikule lettuce, half avocado, green apple, Mihaliç cheese, walnut, sipecial lime vinaigrette",
       "description_tr": "Yedikule marul, yarım avokado, yeşil elma, Mihaliç peyniri, ceviz, özel lime vinegret",
-      "price": "330 TL"
+      "price": "360"
     },
     {
-      "name_en": "Vegan Farro Salad with Pomegranate Sauce Vg",
+      "name_en": "Cunda Salad",
+      "name_tr": "Cunda Salatası",
+      "description_en": "Field tomatoes, arugula, cucumber, village pepper, red onion, black round Ayvalık olives, mint, dill, and a slice of Ezine white cheese, with red wine vinegar and Edremit's natural extra virgin olive oil.",
+      "description_tr": "Kırmızı şarap sirkesi ve Edremit’in naturel sızma zeytinyağı eşliğinde tarla domatesi, roka, salatalık, köy biberi, mor soğan, siyah yuvarlama Ayvalık zeytini, nane, dereotu ve bir dilim Ezine beyaz peyniri",
+      "price": "370"
+    },
+    {
+      "name_en": "Vegan Wheat and Legume Salad (Vg)",
       "name_tr": "Vegan Buğday ve Baklagil Salatası Vg",
       "description_en": "",
       "description_tr": "",
-      "price": "350 TL"
+      "price": "390"
     }
   ],
   "snacks": [
@@ -394,105 +401,105 @@
       "name_tr": "Sütlü Türk Kahvesi",
       "description_en": "",
       "description_tr": "",
-      "price": "150 TL"
+      "price": "160"
     },
     {
       "name_en": "Espresso",
       "name_tr": "Espresso",
       "description_en": "",
       "description_tr": "",
-      "price": "120 TL"
+      "price": "130"
     },
     {
       "name_en": "Americano",
       "name_tr": "Amerikano",
       "description_en": "",
       "description_tr": "",
-      "price": "130 TL"
+      "price": "140"
     },
     {
       "name_en": "Macchiato / Cortado",
       "name_tr": "Macchiato / Cortado",
       "description_en": "",
       "description_tr": "",
-      "price": "130 TL"
+      "price": "140"
     },
     {
       "name_en": "Cappuccino",
       "name_tr": "Cappuccino",
       "description_en": "",
       "description_tr": "",
-      "price": "160 TL"
+      "price": "170"
     },
     {
       "name_en": "Latte",
       "name_tr": "Latte",
       "description_en": "",
       "description_tr": "",
-      "price": "165 TL"
+      "price": "175"
     },
     {
       "name_en": "Caramel Vanilla Latte",
       "name_tr": "Karamelli Vanilyalı Latte",
       "description_en": "",
       "description_tr": "",
-      "price": "175 TL"
+      "price": "185"
     },
     {
       "name_en": "Hazelnut Chocolate Latte",
       "name_tr": "Fındık ve Çikolatalı Latte",
       "description_en": "",
       "description_tr": "",
-      "price": "175 TL"
+      "price": "185"
     },
     {
       "name_en": "Extra Shot",
       "name_tr": "Ekstra Shot",
       "description_en": "",
       "description_tr": "",
-      "price": "60 TL"
+      "price": "70"
     },
     {
       "name_en": "Filter Coffee",
       "name_tr": "Filtre Kahve",
       "description_en": "",
       "description_tr": "",
-      "price": "145TL"
+      "price": "155"
     },
     {
       "name_en": "Iced Latte",
       "name_tr": "Buzlu Latte",
       "description_en": "",
       "description_tr": "",
-      "price": "165 TL"
+      "price": "175"
     },
     {
       "name_en": "Caramel Vanilla Iced Latte",
       "name_tr": "Karamelli Vanilyalı Buzlu Latte",
       "description_en": "",
       "description_tr": "",
-      "price": "175 TL"
+      "price": "185"
     },
     {
       "name_en": "Hazelnut Chocolate Iced Latte",
       "name_tr": "Fındık ve Çikolatalı Buzlu Latte",
       "description_en": "",
       "description_tr": "",
-      "price": "175 TL"
+      "price": "185"
     },
     {
       "name_en": "Iced Americano",
       "name_tr": "Buzlu Amerikano",
       "description_en": "",
       "description_tr": "",
-      "price": "130 TL"
+      "price": "140"
     },
     {
       "name_en": "Iced Filter Coffee",
       "name_tr": "Buzlu Filtre Kahve",
       "description_en": "",
       "description_tr": "",
-      "price": "145 TL"
+      "price": "155"
     }
   ],
   "tea": [
@@ -501,45 +508,44 @@
       "name_tr": "Rize Çayı",
       "description_en": "",
       "description_tr": "",
-      "price": "60 TL"
+      "price": "70"
     },
     {
       "name_en": "Iced Apple Green Tea",
       "name_tr": "Buzlu Elmalı Yeşil Çay",
       "description_en": "",
       "description_tr": "",
-      "price": "145 TL"
+      "price": "155"
     },
     {
       "name_en": "Lipton Ice Tea 330 ml",
       "name_tr": "Lipton Buzlu Çay 330 ml",
       "description_en": "Lemon / Peach / Lemon Light / Peach Light",
       "description_tr": "Limon / Şeftali / Limon Light / Şeftali Light",
-      "price": "80 TL"
+      "price": "90"
     },
     {
       "name_en": "Natural Kinds of Herbs Tea",
       "name_tr": "Halis Bitki Çayları",
       "description_en": "Linden&Mint Tea, Sage Tea, Rose-hip Tea, Green Tea with Jasmin, Balm Tea, Fennel Tea, Camomile Tea, Relaxing Tea, İstanbul Tea",
       "description_tr": "Ihlamur&Taze Nane Çayı, Adaçayı, Kuşburnu Çayı, Yaseminli Yeşil Çay, Melisa Çayı, Rezene Çayı, Papatya Çayı, Rahatlama Çayı, Yeşil Çay, Yasemin Çayı,Taze Nane Çayı, Ihlamur Çayı",
-      "price": "170 TL"
-    },
-    {
-      "name_en": "Indian Chai / Iced Indian Chai",
-      "name_tr": "Hint Çayı / Buzlu Hint Çayı",
-      "description_en": "Black tea brewed with cinnamon, cardomom, cloves, ginger and milk",
-      "description_tr": "Tarçın, karanfil, kakule, zencefil ve süt ile pişirilmiş siyah çay",
-      "ingredients_en": "Home-made",
-      "ingredients_tr": "Kafe Ara yapımı",
-      "price": "150 TL"
+      "price": "180"
     },
     {
       "name_en": "Mixed Dried Fruits Tea",
       "name_tr": "Karışık Meyve Kurusu Çayı",
       "description_en": "Apple, orange, lemon, rose-hip, cinnamon",
       "description_tr": "Elma, portakal,limon, kuşburnu kurusu ve tarçınlı çay",
-      "price": "170 TL"
+      "price": "180"
     }
   ],
-  "beers": []
+  "beers": [
+    {
+      "name_en": "BOMONTİ UNFILTERED (50 cl)",
+      "name_tr": "BOMONTİ FİLTRESİZ (50 cl)",
+      "description_en": "",
+      "description_tr": "",
+      "price": "290"
+    }
+  ]
 }

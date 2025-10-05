@@ -1,6 +1,8 @@
 import { NextResponse } from 'next/server'
 import { getMenuData, saveMenuData } from '@/lib/menu-storage'
 
+export const runtime = 'nodejs'
+
 // Simple in-memory rate limiting
 const rateLimit = new Map()
 const RATE_LIMIT_WINDOW = 60 * 1000 // 1 minute

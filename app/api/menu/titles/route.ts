@@ -1,6 +1,8 @@
 import { NextResponse } from 'next/server'
 import { getCategoryTitles, saveCategoryTitles } from '@/lib/menu-storage'
 
+export const runtime = 'nodejs'
+
 export async function GET() {
   try {
     const titles = await getCategoryTitles()
